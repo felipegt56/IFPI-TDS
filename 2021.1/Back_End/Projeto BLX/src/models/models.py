@@ -1,13 +1,13 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, List
 
 class Usuario(BaseModel):
     id: Optional[str] = None
     nome: str
     telefone: str
     meus_produtos: List[Produtos]
-    minhas_vendas: List[Produtos]
-    meus_pedidos: List[Produtos]
+    minhas_vendas: List[Pedido]
+    meus_pedidos: List[Pedido]
 
 class Produto(BaseModel):
     id: Optional[str] = None
