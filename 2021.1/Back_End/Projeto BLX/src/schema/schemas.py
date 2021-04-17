@@ -1,12 +1,10 @@
 from pydantic import BaseModel
 from typing import Optional, List
 
-
 class Usuario(BaseModel):
     id: Optional[str] = None
     nome: str
     telefone: str
-
 
 class Produto(BaseModel):
     id: Optional[str] = None
