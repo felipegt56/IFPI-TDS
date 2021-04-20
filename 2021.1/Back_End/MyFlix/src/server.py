@@ -19,3 +19,14 @@ def cadastra_series(serie: Serie, db: Session = Depends(get_db)):
 def listar_series(db: Session = Depends(get_db)):
     serie = RepositorioSerie(db).listar()
     return serie
+
+@app.get('/series/{serie_id}')
+def obter_serie(serie_id: int, db: Session = Depends(get_db)):
+    serie = RepositorioSerie(db).obter(serie_id)
+    return serie
+
+
+@app.delete('/series/{serie_id}')
+def obter_serie(serie_id: int, db: Session = Depends(get_db)):
+    RepositorioSerie(db).remover(serie_id)
+    return {"msg": "Removido com sucesso"}
