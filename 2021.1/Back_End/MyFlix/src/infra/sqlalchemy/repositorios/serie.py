@@ -21,6 +21,3 @@ class RepositorioSerie():
     def listar(self):
         serie = self.db.query(models.Serie).all()
         return serie
-
-
-   

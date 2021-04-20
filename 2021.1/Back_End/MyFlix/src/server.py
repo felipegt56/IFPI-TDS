@@ -19,4 +19,3 @@ def cadastra_series(serie: Serie, db: Session = Depends(get_db)):
 def listar_series(db: Session = Depends(get_db)):
     serie = RepositorioSerie(db).listar()
     return serie
-
