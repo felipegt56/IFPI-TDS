@@ -25,6 +25,11 @@ def obter_serie(serie_id: int, db: Session = Depends(get_db)):
     serie = RepositorioSerie(db).obter(serie_id)
     return serie
 
+@app.put('/series/{titulo}')
+def listar_titulo(titulo: str, db: Session = Depends(get_db)):
+    series_titulo = RepositorioSerie(db).exibir_titulo(titulo)
+    return series_titulo
+
 
 @app.delete('/series/{serie_id}')
 def obter_serie(serie_id: int, db: Session = Depends(get_db)):

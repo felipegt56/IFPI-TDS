@@ -29,6 +29,10 @@ class RepositorioSerie():
 
         return serie
 
+    def exibir_titulo(self, titulo):
+        lista_id = self.db.query(models.Serie).filter(models.Serie.id == id).first()
+        return lista_id
+
     def remover(self, serie_id: int):
         stmt = delete(models.Serie).where(models.Serie.id == serie_id)
 
