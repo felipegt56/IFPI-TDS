@@ -27,7 +27,6 @@ def atualizar_produto(id: int, produto: Produto, session: Session = Depends(get_
     produto.id = id
     return produto
 
-
 @app.delete('/produtos/{id}')
 def remover_produto(id: int, session: Session = Depends(get_db)):
     RepositorioProduto(session).remover(id)

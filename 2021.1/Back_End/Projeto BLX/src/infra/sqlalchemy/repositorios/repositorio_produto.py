@@ -14,7 +14,7 @@ class RepositorioProduto():
                                     detalhes=produto.detalhes,
                                     preco=produto.preco,
                                     disponivel=produto.disponivel,
-                                    usuario_id=produto.usuario_id)
+                                    id_usuario=produto.id_usuario)
         self.session.add(db_produto)
         self.session.commit()
         self.session.refresh(db_produto)
