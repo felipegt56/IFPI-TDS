@@ -1,0 +1,54 @@
+Atividade 1
+Pesquisa sobre as principais características dos dispositivos móveis e defina quais são os principais fatores de cada uma delas.
+
+As principais características dos dispositivos móveis são a portabilidade, usabilidade, funcionalidade e conectividade.
+
+✔ Portabilidade
+✔ Usabilidade
+✔ Funcionalidade
+✔ Conectividade
+
+Portabilidade
+Definido como a facilidade de se transportado de um lugar para o outro com facilidade.E seus principais fatores são o tamanho do dispositivo e seus componentes e peso do dispositivo e seus acessórios.
+
+Usabilidade
+Um dispositivo deve ser utilizável por tipos de pessoas diferentes em diversos ambientes, sendo que as vai depender de vários fatores como a características do usuário do ambiente e do dispositivo que está sendo usado.
+Características do usuário:
+Uma interação do usuário com um dispositivo vai depender muito de suas características pessoais,tamanho e força ,flexibilidade e destreza e conhecimento e capacidade.
+
+Características do ambiente:
+Vai depender do tipo de  local onde será utilizado:
+Corporativo (Escritório, reuniões de negócio)
+ Lazer (Praia, Clubes, Shows musicais)
+Doméstico (rotinas do dia-a-dia, ajuda nas
+tarefas domésticas).
+
+Características dos dispositivos:
+O formato do dispositivo, seus acessórios e funcionamento interferem diretamente na usabilidade:	
+Tempo de inicialização
+Integridade dos dados
+Interface com o usuário (teclado,mouse,etc)
+Robustez/resistência.
+
+Funcionalidade
+As funcionalidades são implementadas na forma de aplicações, elas se divide em:
+Independentes: executam sem qualquer contato com outro usuário
+ou sistema (jogos, relógio,calculadora, etc).
+Dependentes: precisam se conectar a outros usuários ou sistema (calendário, agenda,GPS, correio eletrônico, notícias, etc).
+
+Conectividade
+Muitos dispositivos móveis tem a capacidade de usar aplicações de
+forma independente, mas sua função primária é:
+Conectar pessoas e/ou sistemas
+Transmitir e receber informações.
+
+Um dispositivo móvel opera em três modos:
+Sempre
+Parcial
+Nunca
+
+	✔Um dispositivo móvel pode estar sempre conectado a um sistema back-end;
+✔ Um dispositivo móvel pode estar conectado de forma intermitente a um
+sistema back-end
+✔ Um dispositivo móvel pode operar inteiramente sem conexão a um sistema
+back-end
