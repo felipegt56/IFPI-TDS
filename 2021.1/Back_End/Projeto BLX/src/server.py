@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends, status
+from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 from sqlalchemy.orm import Session
 from src.schema.schemas import Produto, Produtosimples, Usuario
@@ -6,9 +7,19 @@ from src.infra.sqlalchemy.config.database import get_db, criar_bd
 from src.infra.sqlalchemy.repositorios.repositorio_produto import RepositorioProduto
 from src.infra.sqlalchemy.repositorios.repositorio_usuario import RepositorioUsuario
 
-criar_bd()
+#criar_bd()
 
 app = FastAPI()
+
+# CORS
+origins = ['http://localhost:3000', 
+            'http://myapp.vercel.com']
+
+app.add_middleware(CORSMiddleware, 
+                    allow_origins=origins,
+                    allow_credentials=True,
+                    allow_methods=["*"],
+                    allow_headers=["*"],)
 
 
 @app.post('/produtos', status_code=status.HTTP_201_CREATED, response_model=Produtosimples)
