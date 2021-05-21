@@ -1,7 +1,8 @@
 from pydantic import BaseModel
 from typing import Optional, List
 
-class Produtosimples(BaseModel):
+
+class ProdutoSimples(BaseModel):
     id: Optional[int] = None
     nome: str
     preco: float
@@ -10,12 +11,13 @@ class Produtosimples(BaseModel):
     class Config:
         orm_mode = True
 
+
 class Usuario(BaseModel):
     id: Optional[int] = None
     nome: str
-    telefone: str
     senha: str
-    produtos: List[Produtosimples] = []
+    telefone: str
+    produtos: List[ProdutoSimples] = []
 
     class Config:
         orm_mode = True
@@ -24,11 +26,12 @@ class Usuario(BaseModel):
 class UsuarioSimples(BaseModel):
     id: Optional[int] = None
     nome: str
+    senha: str
     telefone: str
 
     class Config:
         orm_mode = True
-
+        
 
 class Produto(BaseModel):
     id: Optional[int] = None
@@ -36,15 +39,36 @@ class Produto(BaseModel):
     detalhes: str
     preco: float
     disponivel: bool = False
-    id_usuario: Optional[int]
+    usuario_id: Optional[int]
     usuario: Optional[UsuarioSimples]
 
     class Config:
         orm_mode = True
 
+
 class Pedido(BaseModel):
-    id: Optional[str] = None
+    id: Optional[int] = None
     quantidade: int
-    entrega: bool = True
-    endereco: str
+    entrega_ou_retirada: Optional[str]
+    local_de_entrega: str
     observacoes: Optional[str] = 'Sem observações'
+
+    usuario_id: Optional[int]
+    produto_id: Optional[int]
+
+    usuario: Optional[UsuarioSimples]
+    produto: Optional[ProdutoSimples]
+
+    class Config:
+        orm_mode = True
+    
+    
+class PedidoSimples(BaseModel):
+    id: Optional[int] = None
+    quantidade: int
+    local_de_entrega: str
+    observacoes: Optional[str] = 'Sem observações'
+    produto: Optional[ProdutoSimples]
+
+    class Config:
+        orm_mode = True

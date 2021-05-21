@@ -1,14 +1,14 @@
 from fastapi import APIRouter, status, Depends, HTTPException
 from typing import List
 from sqlalchemy.orm import Session
-from src.schema.schemas import Produto, Produtosimples
+from src.schema.schemas import Produto, ProdutoSimples
 from src.infra.sqlalchemy.config.database import get_db
 from src.infra.sqlalchemy.repositorios.repositorio_produto \
     import RepositorioProduto
 
 router = APIRouter()
 
-@router.post('/produtos', status_code=status.HTTP_201_CREATED, response_model=Produtosimples)
+@router.post('/produtos', status_code=status.HTTP_201_CREATED, response_model=ProdutoSimples)
 def criar_produto(produto: Produto, db: Session = Depends(get_db)):
     produto_criado = RepositorioProduto(db).criar(produto)
     return produto_criado
@@ -25,7 +25,7 @@ def exibir_produto(id: int, session: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail='Produto não Localizado')
     return produto_localizado
 
-@router.put('/produtos/{id}', response_model=Produtosimples)
+@router.put('/produtos/{id}', response_model=ProdutoSimples)
 def atualizar_produto(id: int, produto: Produto, session: Session = Depends(get_db)):
     RepositorioProduto(session).editar(id, produto)
     produto.id = id
