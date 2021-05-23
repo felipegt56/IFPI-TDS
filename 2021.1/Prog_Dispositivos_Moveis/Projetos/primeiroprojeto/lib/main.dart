@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Meu App',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.red
       ),
       home: MyHomePage(title: 'Home'),
     );
@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             // ignore: prefer_const_constructors
             Text(
-              'Você apertou o botão tantas vezes:',
+              'Você apertou o botão tantas vezes!',
             ),
             Text(
               '$_counter',
