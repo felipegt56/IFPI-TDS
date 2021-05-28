@@ -4,15 +4,14 @@ void main() {
   runApp(MyApp());
 }
 
-// ignore: use_key_in_widget_constructors
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Meu App',
+      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.purple
+        primarySwatch: Colors.red,
       ),
       home: MyHomePage(title: 'Home'),
     );
@@ -20,9 +19,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  // ignore: prefer_const_constructors_in_immutables
-  MyHomePage({key, required this.title}) : super(key: key);
-
+  MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
@@ -44,13 +41,43 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: const <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.red
+              ),
+              child: Text(
+                "MENU",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
+                )
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.account_balance),
+              title: Text("SALDO"),
+            ),
+            ListTile(
+              leading: Icon(Icons.file_copy),
+              title: Text("EXTRATO"),
+            ),
+            ListTile(
+              leading: Icon(Icons.payment),
+              title: Text("PAGAMENTO"),
+            ),
+          ],
+        )
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // ignore: prefer_const_constructors
             Text(
-              'Você apertou o botão tantas vezes!',
+              'Você já apertou o botão várias vezes:',
             ),
             Text(
               '$_counter',
@@ -62,9 +89,8 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        // ignore: prefer_const_constructors
         child: Icon(Icons.add),
-      ),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
