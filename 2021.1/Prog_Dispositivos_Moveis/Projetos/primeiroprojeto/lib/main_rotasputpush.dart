@@ -3,13 +3,9 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     title: "Navegation Basics",
-    initialRoute: '/primeira',
-    routes: {
-      '/primeira': (context) => FirstRoute(),
-      '/segunda': (context) => SecondRoute(),
-    },
+    home: FirstRoute(),
     theme: ThemeData(
-      primarySwatch: Colors.pink,
+    primarySwatch: Colors.pink,
     ),
   ));
 }
@@ -25,7 +21,7 @@ class FirstRoute extends StatelessWidget {
         child: ElevatedButton(
           child: Text('Abrir segunda rota'),
           onPressed: () {
-            Navigator.pushNamed(context, '/segunda');
+            Navigator.push(context,MaterialPageRoute(builder: (context) => SecondRoute()),);
           },
         ),
       ),
@@ -45,7 +41,7 @@ class SecondRoute extends StatelessWidget {
         child: ElevatedButton(
           child: Text('Retornar!'),
           onPressed: () {
-            Navigator.pushNamed(context, '/primeira');
+            Navigator.pop(context);
           },
         ),
       ),
