@@ -15,25 +15,24 @@ router = APIRouter()
             response_model=Produto)
 def criar_produto(
     produto: Produto,
-    usuario: Usuario = Depends(obter_usuario_logado), db: Session = Depends(get_db)):
+    usuario: Usuario = Depends(obter_usuario_logado),
+    db: Session = Depends(get_db)):
     produto_criado = RepositorioProduto(db).criar(produto)
     return produto_criado
 
 
-@router.get('/produtos', response_model=List[Produto])
+@router.get('/produtos', response_model=List[ProdutoSimples])
 def listar_produtos(db: Session = Depends(get_db)):
     produtos = RepositorioProduto(db).listar()
     return produtos
     
-
-'''@router.get('/produtos/{id}')
+@router.get('/produtos/{id}')
 def exibir_produto(id: int, session: Session = Depends(get_db)):
     produto_localizado = RepositorioProduto(session).buscarPorId(id)
     if not produto_localizado:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail=f'Produto com o ID {id} não localizado')
     return produto_localizado
-'''
 
 @router.put('/produtos/{id}', response_model=ProdutoSimples)
 def atualizar_produto(

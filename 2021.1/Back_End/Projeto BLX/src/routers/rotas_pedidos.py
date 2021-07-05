@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from src.infra.sqlalchemy.config.database import get_db
 from src.infra.sqlalchemy.repositorios.repositorio_pedidos \
     import RepositorioPedido
-from src.schema.schemas import Pedido, Usuario, PedidoSimples
+from src.schema.schemas import Pedido, Usuario
 
 router = APIRouter()
 
@@ -21,7 +21,7 @@ def fazer_pedido(
     return pedido_criado
 
 
-@router.get('/pedidos/{id}', response_model=Pedido)
+@router.get('/exibir', response_model=Pedido)
 def exibir_pedido(id: int, session: Session = Depends(get_db)):
     try:
         pedido = RepositorioPedido(session).buscar_por_id(id)
@@ -39,8 +39,9 @@ def listar_pedidos(usuario: Usuario = Depends(obter_usuario_logado),
     return pedidos
 
 
-@router.get('/pedidos/{usuario_id}/vendas', response_model=List[Pedido])
-def listar_vendas(usuario_id: int, session: Session = Depends(get_db)):
+@router.get('/vendas', response_model=List[Pedido])
+def listar_vendas(usuario: Usuario = Depends(obter_usuario_logado),
+                  session: Session = Depends(get_db)):
     pedidos = RepositorioPedido(
-        session).listar_minhas_vendas_por_usuario_id(usuario_id)
+        session).listar_minhas_vendas_por_usuario_id(usuario.id)
     return pedidos
