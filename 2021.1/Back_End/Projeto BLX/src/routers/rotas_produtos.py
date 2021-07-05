@@ -12,21 +12,22 @@ router = APIRouter()
 
 @router.post('/produtos',
             status_code=status.HTTP_201_CREATED,
-            response_model=Produto)
+            response_model=ProdutoSimples)
 def criar_produto(
     produto: Produto,
     usuario: Usuario = Depends(obter_usuario_logado),
     db: Session = Depends(get_db)):
+    produto.usuario_id = usuario.id
     produto_criado = RepositorioProduto(db).criar(produto)
     return produto_criado
 
 
-@router.get('/produtos', response_model=List[ProdutoSimples])
+@router.get('/produtos', response_model=List[Produto])
 def listar_produtos(db: Session = Depends(get_db)):
     produtos = RepositorioProduto(db).listar()
     return produtos
     
-@router.get('/produtos/{id}')
+@router.get('/produtos/{id}', response_model=Produto)
 def exibir_produto(id: int, session: Session = Depends(get_db)):
     produto_localizado = RepositorioProduto(session).buscarPorId(id)
     if not produto_localizado:

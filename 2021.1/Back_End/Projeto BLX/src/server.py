@@ -1,7 +1,8 @@
-from fastapi import FastAPI, Request, BackgroundTasks
+from fastapi import FastAPI, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from src.routers import rotas_produtos, rotas_auth, rotas_pedidos
 from src.jobs.write_notification import write_notification
+from src.middlewares.timer import SimpleASGIMiddleware
 
 app = FastAPI()
 
@@ -15,6 +16,9 @@ app.add_middleware(CORSMiddleware,
                     allow_methods=["*"],
                     allow_headers=["*"],)
 
+app.add_middleware(SimpleASGIMiddleware)
+
+
 #Rotas PRODUTOS
 app.include_router(rotas_produtos.router)
 
@@ -24,20 +28,9 @@ app.include_router(rotas_auth.router, prefix="/auth")
 #Rotas PEDIDOS
 app.include_router(rotas_pedidos.router)
 
+# Background Tasks
 @app.post('/send_email/{email}')
 def send_email(email: str, background: BackgroundTasks):
     background.add_task(write_notification,
                         email, 'Olá tudo bem?!')
     return {'OK': 'Mensagem enviada'}
-
-# Middlewares
-
-@app.middleware('http')
-async def tempoMiddleware(request: Request, next):
-    print('Interceptou Chegada...')
-
-    response = await next(request)
-
-    print('Interceptou Volta ...')
-
-    return response
