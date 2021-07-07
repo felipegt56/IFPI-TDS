@@ -47,4 +47,4 @@ class RepositorioProduto():
             self.session.delete(exibir)
             self.session.commit()
             return {'Mensagem': f'Produto {exibir.nome} removido com sucesso!.'}
-        return {'Mensagem': f'Produto {id} não encontrado!.'}
+        

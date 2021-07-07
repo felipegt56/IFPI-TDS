@@ -22,14 +22,14 @@ def fazer_pedido(
     return pedido_criado
 
 
-@router.get('/pedidos/{id}', response_model=List[PedidoSimples])
+@router.get('/pedidos/{id}', response_model=Pedido)
 def exibir_pedido(id: int, session: Session = Depends(get_db)):
     try:
         pedido = RepositorioPedido(session).buscar_por_id(id)
         return pedido
     except:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                            detail=f"Não existe um pedido com o ID {id}")
+                            detail=f'Não existe um pedido com id={id}')
 
 
 @router.get('/pedidos', response_model=List[PedidoSimples])
@@ -41,7 +41,7 @@ def listar_pedidos(usuario: Usuario = Depends(obter_usuario_logado),
     return pedidos
 
 
-@router.get('/pedidos/vendas', response_model=List[PedidoSimples])
+@router.get('/vendas', response_model=List[PedidoSimples])
 def listar_vendas(usuario: Usuario = Depends(obter_usuario_logado),
                   session: Session = Depends(get_db)):
     pedidos = RepositorioPedido(
