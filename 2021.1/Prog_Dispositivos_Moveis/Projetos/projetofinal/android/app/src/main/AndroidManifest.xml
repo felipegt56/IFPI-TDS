@@ -2,7 +2,7 @@
     package="br.com.joao_felipe.projetofinal">
    <application
         android:label="projetofinal"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -37,7 +37,5 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-        <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBQU_FEVasmO18_tcIjYX_JQslMKTJiYF4"/>
     </application>
 </manifest>

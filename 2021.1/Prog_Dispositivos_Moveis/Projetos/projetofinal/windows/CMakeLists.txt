@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(projeto_final LANGUAGES CXX)
+project(projetofinal LANGUAGES CXX)
 
-set(BINARY_NAME "projeto_final")
+set(BINARY_NAME "projetofinal")
 
 cmake_policy(SET CMP0063 NEW)
 

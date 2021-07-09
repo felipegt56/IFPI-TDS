@@ -1,4 +1,4 @@
-package br.com.joao_felipe.projeto_final;
+package br.com.joao_felipe.projetofinal;
 
 import io.flutter.embedding.android.FlutterActivity;
 
